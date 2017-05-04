@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+    {% for info in fileinfo %}
+
+    			    <div>
+                        <p><b> File Number</b> : {{ info.pk }}
+                        <p> Domain : <a href="{% url 'post_filedetail' pk=info.pk %}">{{ info.domain }}</a></p>
+                        <p> Port : {{ info.port }}</p>
+                        <p> Src Derectory : {{ info.src_directory }}</p>
+      					<p> Socket :{{ info.socket|linebreaksbr }}</p>
+    				</div>
+
+
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'blog/base.html' %}
+
+
+{% block content %}
+
+	<form method="POST" class="post-form" >{% csrf_token%}
+
+
+        <div class="container">
+          <h2> Fill the form to Create a File </h2>
+          <div class="panel panel-default">
+            <div class="panel-heading">Domain</div>
+            <div class="panel-body">
+
+                <level>Kobocat Domain :</level>   {{fileform.kobocat_domain}} </br></br>
+                <level>KoboForm Domain :</level>   {{fileform.koboform_domain}} </br></br>
+                <level>Enketo Server Domain :</level>   {{fileform.enketo_server_domain}} </br></br>
+                <level>Enketo Web Domain :</level>   {{fileform.enketo_web_domain}}
+
+            </div>
+          </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Port</div>
+                <div class="panel-body">
+
+                    <level>Kobocat Port :</level>   {{fileform.kobocat_port}} </br></br>
+                    <level>KoboForm Port :</level>   {{fileform.koboform_port}} </br></br>
+                    <level>Enketo Server Port :</level>   {{fileform.enketo_server_port}} </br></br>
+                    <level>Enketo Web Port :</level>   {{fileform.enketo_web_port}}
+
+                </div>
+            </div>
+
+             <div class="panel panel-default">
+                <div class="panel-heading">Socket</div>
+                <div class="panel-body">
+
+                    <level>Kobocat Socket :</level>   {{fileform.kobocat_socket}} </br></br>
+                    <level>KoboForm Socket :</level>   {{fileform.koboform_socket}} </br></br>
+                    <level>Status Socket :</level>   {{fileform.socket_status}} </br></br>
+
+
+                </div>
+            </div>
+
+             <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <level>Source Derectory:</level>   {{fileform.src_directory}} </br></br>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <level>Virtual Environment:</level>   {{fileform.virtualenv}} </br></br>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">DataBase</div>
+                <div class="panel-body">
+
+                    <level>DB Name :</level>   {{fileform.db_database_name}} </br></br>
+                    <level>DB User :</level>   {{fileform.db_user}} </br></br>
+                    <level>DB Password :</level>   {{fileform.db_password}} </br></br>
+                    <level>DB Server IP :</level>   {{fileform.db_server_ip}} </br></br>
+                    <level>DB Port :</level>   {{fileform.db_port}} </br></br>
+
+                </div>
+            </div>
+
+            <button type="submit" class="save btn btn-default">Save</button>
+
+        </div>
+
+
+
+
+
+
+	</form>
+{% endblock %}
+
+
+
+

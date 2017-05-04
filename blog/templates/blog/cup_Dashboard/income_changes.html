@@ -1,0 +1,288 @@
+{% extends 'blog/base.html' %}
+
+{% block customizeStyle %}
+    <style type="text/css">
+        .box {
+            width: 40px;
+        height: 20px;
+        display: inline-block;
+        }
+         .blue {
+        background: lightskyblue;
+        }
+         .black {
+        background: black;
+        }
+
+        .orange {
+        background: orange;
+        }
+        .green {
+        background: palegreen;
+        }
+         .violet {
+        background: mediumslateblue;
+        }
+        .scroll{
+            float:left;
+            width:1000px;
+            overflow-y: auto;
+            height: 500px;
+        }
+
+
+
+    </style>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+           <div class="page-header">
+
+       <div class="container">
+        <h1><a href="/">Cup Dash Board </a></h1>
+          <div class="row">
+
+
+
+
+          </div>
+        </div>
+    </div>
+
+    <p><b># R_Health Service Seeking</b></p>
+     <div id = "HealthServiceSeeking_1">
+    </div>
+
+    <div class = " scroll">
+        <table id = "Schooling_Status"  border="1" style = "align:center" width="100%" class="table table-bordered table-hover">
+            <caption><b> Schooling Status </b></caption>
+                <thead>
+
+                </thead>
+                <tbody>
+
+                </tbody>
+        </table>
+
+    </div>
+
+
+
+
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+
+
+
+
+
+
+
+// ********** Getting Value From the Views *********
+
+var jsonForChart = {{ jsonForChart|safe }};
+var jsonForChartTable = {{ jsonForChartTable|safe }};
+
+
+// ******* Get The Month Name for the Below Table (Unique -  Start )********
+
+var uniqueCategories= $.unique(jsonForChartTable.tableData.map(function (d) {
+    return d.category;}));
+
+// ******* Get The Month Name for the Below Table (Unique -  End )********
+
+// Making Table  (Start) **************
+
+generateCategryTableData(jsonForChartTable , uniqueCategories)// Category of Scheme Data for showing Tabluler form
+
+// Making Table (End) *************
+
+
+$( document ).ready(function() {
+
+    // *******  Basic Line Chart (HealthServiceSeeking_1)  **********
+
+    jsonDataList('HealthServiceSeeking_1','Solar Employment Growth by Sector, 2010-2016', 'area',false,false,jsonForChart)
+
+
+
+
+});
+
+
+
+ function generateCategryTableData(jsonForChartTable,uniqueCategories){
+
+      thead = ''
+      thead += '<tr><th>'+"Id"+'</th>'
+         for (var i = 0 ; i<uniqueCategories.length ; i++)
+         {
+                thead +='<th>'+uniqueCategories[i]+'</th>'
+         }
+     thead +='</tr>'
+
+       tbody = '';
+	   for(var i=0; i < jsonForChartTable.tableData.length; i++){
+
+	      tbody += '<tr><td>'+jsonForChartTable.tableData[i].hh_id+'</td>'
+
+          for( var j = 0 ; j < uniqueCategories.length ; j++)
+          {
+              var c = jsonForChartTable.tableData[i].category
+
+              if ( c.localeCompare("+uniqueCategories[j]+"))
+              {
+
+                  for (var k = 0 ; k < jsonForChartTable.tableData[i].name.length ; k++){
+
+
+                      if(jsonForChartTable.tableData[i].name[k] == "01" )
+                      {
+                          jsonForChartTable.tableData[i].name[k] = '<span class="blue box"></span>';
+                      } else if(jsonForChartTable.tableData[i].name[k] == "02" )
+                      {
+                          jsonForChartTable.tableData[i].name[k] = '<span class="black box"></span>';
+                      } else if(jsonForChartTable.tableData[i].name[k] == "03" )
+                      {
+                          jsonForChartTable.tableData[i].name[k] = '<span class="green box"></span>'
+                      } else if(jsonForChartTable.tableData[i].name[k] == "04" )
+                      {
+                          jsonForChartTable.tableData[i].name[k] = '<span class="orange box"></span>'
+                      } else if(jsonForChartTable.tableData[i].name[k] == "05" )
+                      {
+                          jsonForChartTable.tableData[i].name[k] = '<span class="violet box"></span>';
+                      }
+
+
+                  }
+
+                    var colors = [
+                        "orange","orange","pink","pink","red","red","purple","purple",
+                        "blue","blue","green","green","brown","brown","yellow","yellow"
+                    ];
+
+
+
+                  tbody +=  '<td>'+jsonForChartTable.tableData[i].name.join(',').replace(/,/g, ' ').split()+'</td>'
+              }
+              else
+                 tbody += '<td></td>'
+
+          }
+
+          tbody +='</tr>'
+
+	   }
+	   $('#Schooling_Status').find('thead').html(thead);
+	   $('#Schooling_Status').find('tbody').html(tbody);
+
+	}
+
+
+
+function jsonDataList(divId,titleText,chartType,stackLabelEnabled,plotColumnDatalabelEnabled,dataset) {
+
+    var chart = {
+            type: chartType
+        };
+	  var title = {
+                text: titleText,
+            };
+
+
+   var subtitle = {
+                text: 'Source: thesolarfoundation.com',
+            };
+   var xAxis = {
+                categories: dataset.cat_list,
+                tickmarkPlacement: 'on',
+                title: {
+                     enabled: false
+                        }
+            };
+   var yAxis = {
+                    allowDecimals: false,
+                    min: 0,
+                    title: {
+                         text: 'Number of fruits'
+                             },
+
+                    stackLabels: {
+                     enabled: stackLabelEnabled,
+                     style: {
+                          fontWeight: 'bold',
+                          color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                     }
+
+                    }
+            };
+
+   var legend = {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            };
+    var tooltip = {
+	      pointFormat: '{series.name}: <b>{point.y:.1f}%</b>'
+	   };
+	   var plotOptions = {
+	      pie: {
+	         allowPointSelect: true,
+	         cursor: 'pointer',
+	         dataLabels: {
+	            enabled: false
+	         },
+	         showInLegend: true
+	      }
+	   };
+	   var series= dataset.total
+
+        var plotOptions = {
+
+                column: {
+
+                        stacking: 'normal',
+                        dataLabels: {
+                            enabled: plotColumnDatalabelEnabled,
+                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                        }
+                    }
+
+            };
+      var credits = {
+
+              enabled : false
+            }
+
+	   var credits = {
+	       enabled:false,
+       };
+
+
+	   var json = {};
+	   json.chart = chart;
+	   json.title = title;
+	   json.subtitle = subtitle;
+	   json.xAxis = xAxis;
+       json.yAxis = yAxis;
+	   json.tooltip = tooltip;
+	   json.series = series;
+	   json.plotOptions = plotOptions;
+	   json.credits = credits;
+
+	   $('#'+divId).highcharts(json);
+
+}
+
+
+</script>
+
+{% endblock %}

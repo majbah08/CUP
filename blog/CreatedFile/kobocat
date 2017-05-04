@@ -1,0 +1,28 @@
+server {
+    listen 345;
+    server_name 445;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root 34534/kobocat-template;
+        try_files $uri $uri/ @secondStatic;
+    }
+    location @secondStatic {
+        root 34534/kobocat/onadata/apps/main;
+        try_files $uri $uri/ @thirdStatic;
+    }
+    location @thirdStatic {
+        root 34534/kobocat/onadata;
+    }
+    location /media {
+        alias 34534/kobocat/onadata/media;
+    }
+    location / {
+        include         uwsgi_params;
+        uwsgi_pass      unix:3453;
+        proxy_redirect off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}

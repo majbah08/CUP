@@ -1,0 +1,911 @@
+{% extends 'blog/base.html' %}
+
+{% block customizeStyle %}
+    <style type="text/css">
+        .box {
+            width: 40px;
+        height: 20px;
+        display: inline-block;
+        }
+         .blue {
+        background: lightskyblue;
+        }
+         .black {
+        background: black;
+        }
+
+        .orange {
+        background: orange;
+        }
+        .green {
+        background: palegreen;
+        }
+         .violet {
+        background: mediumslateblue;
+        }
+        .scroll{
+            float:left;
+            width:1000px;
+            overflow-y: auto;
+            height: 500px;
+        }
+
+
+
+    </style>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+           <div class="page-header">
+
+       <div class="container">
+        <h1><a href="/">Cup Dash Board </a></h1>
+          <div class="row">
+
+            <div class="col-sm-2">
+                 <a href=" {% url 'cup_hh_profile' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span>HH Profile</a>
+            </div>
+
+              <div class="col-sm-2">
+                 <a href=" {% url 'form_Submission_Enomenator' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span>Form Sub. Enomentor</a>
+              </div>
+              <div class="col-sm-2">
+                 <a href=" {% url 'waveMoney_Waiting_Time' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span>Wave Money Waiting Time</a>
+              </div>
+
+              <div class="col-sm-2">
+                 <a href=" {% url 'hh_graduation_competency' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span>HH Graduation Competency</a>
+              </div>
+
+               <div class="col-sm-2">
+                 <a href=" {% url 'R_SLA_Formed' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> SLA Formed Dashboard </a>
+              </div>
+
+              <div class="col-sm-2">
+                 <a href=" {% url 'health_service_seeking' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span>Health Servic Seeking Dashboard</a>
+              </div>
+
+              <div class="col-sm-2">
+                 <a href=" {% url 'hh_schooling_status' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span>Schooling Status</a>
+
+              </div>
+
+              <div class="col-sm-2">
+                 <a href=" {% url 'hunger_experience' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> Hunger Experience</a>
+
+              </div>
+
+              <div class="col-sm-2">
+                 <a href=" {% url 'hh_access_to_neutritious_food' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> Access To Neutritious Food</a>
+
+              </div>
+              <div class="col-sm-2">
+                 <a href=" {% url 'hh_borrowing_sources' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> Borrowing Sources</a>
+
+              </div>
+
+              <div class="col-sm-2">
+                 <a href=" {% url 'Training_Capacity_pay_off_debts_bills' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> Training Capacity pay off debts bills</a>
+
+              </div>
+
+              <div class="col-sm-2">
+                 <a href=" {% url 'Training_Capacity_budget_following' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> Training Capacity Budget Following</a>
+
+              </div>
+              <div class="col-sm-2">
+                 <a href=" {% url 'Training_Capacity_budget_following' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> Training Capacity Budget Following</a>
+
+              </div>
+
+              <div class="col-sm-2">
+                 <a href=" {% url 'Planning_MF_Saving_Purposes' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> Planning MF Saving Purposes</a>
+
+              </div>
+
+             <div class="col-sm-2">
+                 <a href=" {% url 'training_conducted' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> Training Conducted</a>
+
+              </div>
+              <div class="col-sm-2">
+                 <a href=" {% url 'planning_MF_ends_meet' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> Planning MF Ends Meet</a>
+
+              </div>
+              <div class="col-sm-2">
+                 <a href=" {% url 'income_changes' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> Income Changes</a>
+
+              </div>
+
+
+
+
+
+
+          </div>
+        </div>
+    </div>
+
+    <p>Here the report will be showed</p>
+
+    <p><b># R_Health Service Seeking</b></p>
+     <div id = "HealthServiceSeeking_1">
+    </div>
+
+    <div class = " scroll">
+        <table id = "Schooling_Status"  border="1" style = "align:center" width="100%" class="table table-bordered table-hover">
+            <caption><b> Schooling Status </b></caption>
+                <thead>
+
+                </thead>
+                <tbody>
+
+                </tbody>
+        </table>
+
+    </div>
+
+    <p><b># R_Health Service Seeking</b></p>
+     <div id = "HealthServiceSeeking_2">
+    </div>
+
+
+    <p><b># R_HH Access to Nutritious Food</b></p>
+    <div id = "HHAccesstoNutritiousFood_1">
+    </div>
+
+
+     <p><b># R_HungerExperiences_1</b></p>
+    <div id = "HungerExperiences_1">
+    </div>
+
+
+     <p><b># R_Planning&MF_ends meet</b></p>
+    <div id = "PlanningMF_ends_meet">
+    </div>
+
+
+    <p><b># R_Training&CapacityB_budget-following</b></p>
+    <div id = "TrainingCapacityB_budgetfollowing">
+    </div>
+
+    <p><b># ProfileDetailsHHAnalytics</b></p>
+    <div id = "ProfileDetailsHHAnalytics">
+    </div>
+
+
+    <p><b># Dashboard</b></p>
+    <div id = "Dashboard">
+    </div>
+
+
+    <p><b># Dashboard_2</b></p>
+    <div id = "Dashboard_2">
+    </div>
+    Dashboard_2
+
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+
+
+
+
+
+
+
+// ********** Getting Value From the Views *********
+
+var jsonForChart = {{ jsonForChart|safe }};
+var jsonForChartTable = {{ jsonForChartTable|safe }};
+
+
+console.log(jsonForChart)
+
+
+// ******* Get The Month Name for the Below Table (Unique -  Start )********
+
+var uniqueCategories= $.unique(jsonForChartTable.tableData.map(function (d) {
+    return d.category;}));
+
+// ******* Get The Month Name for the Below Table (Unique -  End )********
+
+// Making Table  (Start) **************
+
+generateCategryTableData(jsonForChartTable , uniqueCategories)// Category of Scheme Data for showing Tabluler form
+
+// Making Table (End) *************
+
+
+$( document ).ready(function() {
+
+    // *******  Basic Line Chart (HealthServiceSeeking_1)  **********
+
+    jsonDataList('HealthServiceSeeking_1','Solar Employment Growth by Sector','line',false,false,jsonForChart)
+
+    // **********  Basic Area Chart (HealthServiceSeeking_2) *************
+
+    jsonDataList('HealthServiceSeeking_2','Solar Employment Growth by Sector, 2010-2016', 'area',false,false,jsonForChart)
+
+    // *********** Basic Bar Chart (HHAccesstoNutritiousFood_1) ***************
+
+    jsonDataList('HHAccesstoNutritiousFood_1','Solar Employment Growth by Sector, 2010-2016', 'bar',false,false,jsonForChart)
+
+    // ************ Basic Stack and group graph (HungerExperiences_1) ***************
+
+
+    jsonDataList('HungerExperiences_1','Solar Employment Growth by Sector, 2010-2016', 'column',true,false,jsonForChart)
+
+   // ************ Basic Stack graph (Showing Each portion value) -- (PlanningMF_ends_meet) ***************
+
+    jsonDataList('PlanningMF_ends_meet','Solar Employment Growth by Sector, 2010-2016', 'column',false,true,jsonForChart)
+
+    // ***********  Column chart and Line Chart Combined with Average Value of all Column (TrainingCapacityB_budgetfollowing) *************
+
+
+
+
+});
+
+
+
+ function generateCategryTableData(jsonForChartTable,uniqueCategories){
+
+      thead = ''
+      thead += '<tr><th>'+"Id"+'</th>'
+         for (var i = 0 ; i<uniqueCategories.length ; i++)
+         {
+                thead +='<th>'+uniqueCategories[i]+'</th>'
+         }
+     thead +='</tr>'
+
+       tbody = '';
+	   for(var i=0; i < jsonForChartTable.tableData.length; i++){
+
+	      tbody += '<tr><td>'+jsonForChartTable.tableData[i].hh_id+'</td>'
+
+          for( var j = 0 ; j < uniqueCategories.length ; j++)
+          {
+              var c = jsonForChartTable.tableData[i].category
+
+              if ( c.localeCompare("+uniqueCategories[j]+"))
+              {
+
+                  for (var k = 0 ; k < jsonForChartTable.tableData[i].name.length ; k++){
+
+
+                      if(jsonForChartTable.tableData[i].name[k] == "01" )
+                      {
+                          jsonForChartTable.tableData[i].name[k] = '<span class="blue box"></span>';
+                      } else if(jsonForChartTable.tableData[i].name[k] == "02" )
+                      {
+                          jsonForChartTable.tableData[i].name[k] = '<span class="black box"></span>';
+                      } else if(jsonForChartTable.tableData[i].name[k] == "03" )
+                      {
+                          jsonForChartTable.tableData[i].name[k] = '<span class="green box"></span>'
+                      } else if(jsonForChartTable.tableData[i].name[k] == "04" )
+                      {
+                          jsonForChartTable.tableData[i].name[k] = '<span class="orange box"></span>'
+                      } else if(jsonForChartTable.tableData[i].name[k] == "05" )
+                      {
+                          jsonForChartTable.tableData[i].name[k] = '<span class="violet box"></span>';
+                      }
+
+
+                  }
+
+                    var colors = [
+                        "orange","orange","pink","pink","red","red","purple","purple",
+                        "blue","blue","green","green","brown","brown","yellow","yellow"
+                    ];
+
+
+
+                  tbody +=  '<td>'+jsonForChartTable.tableData[i].name.join(',').replace(/,/g, ' ').split()+'</td>'
+              }
+              else
+                 tbody += '<td></td>'
+
+          }
+
+          tbody +='</tr>'
+
+	   }
+	   $('#Schooling_Status').find('thead').html(thead);
+	   $('#Schooling_Status').find('tbody').html(tbody);
+
+	}
+
+
+
+function jsonDataList(divId,titleText,chartType,stackLabelEnabled,plotColumnDatalabelEnabled,dataset) {
+
+    var chart = {
+            type: chartType
+        };
+	  var title = {
+                text: titleText,
+            };
+
+
+   var subtitle = {
+                text: 'Source: thesolarfoundation.com',
+            };
+   var xAxis = {
+                categories: dataset.cat_list,
+                tickmarkPlacement: 'on',
+                title: {
+                     enabled: false
+                        }
+            };
+   var yAxis = {
+                    allowDecimals: false,
+                    min: 0,
+                    title: {
+                         text: 'Number of fruits'
+                             },
+
+                    stackLabels: {
+                     enabled: stackLabelEnabled,
+                     style: {
+                          fontWeight: 'bold',
+                          color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                     }
+
+                    }
+            };
+
+   var legend = {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            };
+    var tooltip = {
+	      pointFormat: '{series.name}: <b>{point.y:.1f}%</b>'
+	   };
+	   var plotOptions = {
+	      pie: {
+	         allowPointSelect: true,
+	         cursor: 'pointer',
+	         dataLabels: {
+	            enabled: false
+	         },
+	         showInLegend: true
+	      }
+	   };
+	   var series= dataset.total
+
+        var plotOptions = {
+
+                column: {
+
+                        stacking: 'normal',
+                        dataLabels: {
+                            enabled: plotColumnDatalabelEnabled,
+                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                        }
+                    }
+
+            };
+      var credits = {
+
+              enabled : false
+            }
+
+	   var credits = {
+	       enabled:false,
+       };
+
+
+	   var json = {};
+	   json.chart = chart;
+	   json.title = title;
+	   json.subtitle = subtitle;
+	   json.xAxis = xAxis;
+       json.yAxis = yAxis;
+	   json.tooltip = tooltip;
+	   json.series = series;
+	   json.plotOptions = plotOptions;
+	   json.credits = credits;
+
+	   $('#'+divId).highcharts(json);
+
+}
+
+
+    // **********  Basic Area Chart (HealthServiceSeeking_2) *************
+{##}
+{##}
+{#    $('#HealthServiceSeeking_2').highcharts({#}
+{##}
+{#    chart: {#}
+{#        type: 'area'#}
+{#    },#}
+{#    title: {#}
+{#        text: 'Basic Bar Chart',#}
+{#    },#}
+{#    subtitle: {#}
+{#        text: 'Source: Wikipedia.org'#}
+{#    },#}
+{#    xAxis: {#}
+{#        categories: jsonForChart.cat_list,#}
+{#        tickmarkPlacement: 'on',#}
+{#        title: {#}
+{#            enabled: false#}
+{#        }#}
+{#    },#}
+{#    yAxis: {#}
+{#        title: {#}
+{#            text:'Percentage',#}
+{#        }#}
+{#    },#}
+{#    tooltip: {#}
+{#        pointFormat: '<span style="color:{series.color}">{series.name}</span>: </b> ({point.y})<br/>',#}
+{#        split: true#}
+{#    },#}
+{#    plotOptions: {#}
+{#        area: {#}
+{#            stacking: 'percent',#}
+{#            lineColor: '#ffffff',#}
+{#            lineWidth: 1,#}
+{#            marker: {#}
+{#                lineWidth: 1,#}
+{#                lineColor: '#ffffff'#}
+{#            }#}
+{#        }#}
+{#    },#}
+{#    series:jsonForChart.total,#}
+{##}
+{#   credits: {#}
+{##}
+{#              enabled : false#}
+{#            }#}
+{##}
+{##}
+{#    });#}
+{##}
+{##}
+
+   // *********** Basic Bar Chart (HHAccesstoNutritiousFood_1) ***************
+
+{##}
+{#   $('#HHAccesstoNutritiousFood_1').highcharts({#}
+{##}
+{#      chart: {#}
+{#        type: 'bar'#}
+{#    },#}
+{#    title: {#}
+{#        text: 'Historic World Population by Region'#}
+{#    },#}
+{#    subtitle: {#}
+{#        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'#}
+{#    },#}
+{#    xAxis: {#}
+{#        categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],#}
+{#        title: {#}
+{#            text: null#}
+{#        }#}
+{#    },#}
+{#    yAxis: {#}
+{#        min: 0,#}
+{#        title: {#}
+{#            text: 'Population (millions)',#}
+{#            align: 'high'#}
+{#        },#}
+{#        labels: {#}
+{#            overflow: 'justify'#}
+{#        }#}
+{#    },#}
+{#    tooltip: {#}
+{#        valueSuffix: ' millions'#}
+{#    },#}
+{#    plotOptions: {#}
+{#        bar: {#}
+{#            dataLabels: {#}
+{#                enabled: true#}
+{#            }#}
+{#        }#}
+{#    },#}
+{#    legend: {#}
+{#        layout: 'vertical',#}
+{#        align: 'right',#}
+{#        verticalAlign: 'top',#}
+{#        x: -40,#}
+{#        y: 80,#}
+{#        floating: true,#}
+{#        borderWidth: 1,#}
+{#        backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),#}
+{#        shadow: true#}
+{#    },#}
+{#    credits: {#}
+{#        enabled: false#}
+{#    },#}
+{#    series: [{#}
+{#        name: 'Year 1800',#}
+{#        data: [107, 31, 635, 203, 2]#}
+{#    }, {#}
+{#        name: 'Year 1900',#}
+{#        data: [133, 156, 947, 408, 6]#}
+{#    }, {#}
+{#        name: 'Year 2012',#}
+{#        data: [1052, 954, 4250, 740, 38]#}
+{#    }]#}
+{##}
+{#   });#}
+{##}
+   // ************ Basic Stack and group graph (HungerExperiences_1) ***************
+
+{##}
+{#$('#HungerExperiences_1').highcharts({#}
+{##}
+{#    chart: {#}
+{#        type: 'column'#}
+{#    },#}
+{##}
+{#    title: {#}
+{#        text: 'Total fruit consumtion, grouped by gender'#}
+{#    },#}
+{##}
+{#    xAxis: {#}
+{#        categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']#}
+{#    },#}
+{##}
+{#    yAxis: {#}
+{#        allowDecimals: false,#}
+{#        min: 0,#}
+{#        title: {#}
+{#            text: 'Number of fruits'#}
+{#        },#}
+{##}
+{#        stackLabels: {#}
+{#            enabled: true,#}
+{#            style: {#}
+{#                fontWeight: 'bold',#}
+{#                color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'#}
+{#            }#}
+{#        }#}
+{#    },#}
+{##}
+{#    tooltip: {#}
+{#        formatter: function () {#}
+{#            return '<b>' + this.x + '</b><br/>' +#}
+{#                this.series.name + ': ' + this.y + '<br/>' +#}
+{#                'Total: ' + this.point.stackTotal;#}
+{#        }#}
+{#    },#}
+{##}
+{#    plotOptions: {#}
+{#        column: {#}
+{#            stacking: 'normal'#}
+{#        }#}
+{#    },#}
+{##}
+{#    series: [{#}
+{#        name: 'John',#}
+{#        data: [5, 3, 4, 7, 2],#}
+{#        stack: 'male'#}
+{#    }, {#}
+{#        name: 'Joe',#}
+{#        data: [3, 4, 4, 2, 5],#}
+{#        stack: 'male'#}
+{#    }, {#}
+{#        name: 'Jane',#}
+{#        data: [2, 5, 6, 2, 1],#}
+{#        stack: 'female'#}
+{#    }, {#}
+{#        name: 'Janet',#}
+{#        data: [3, 0, 4, 4, 3],#}
+{#        stack: 'female'#}
+{#    }],#}
+{##}
+{##}
+{#    credits: {#}
+{##}
+{#        enabled: false#}
+{#    }#}
+{##}
+{#});#}
+{##}
+{##}
+
+
+   // ************ Basic Stack graph (Showing Each portion value) -- (PlanningMF_ends_meet) ***************
+
+{##}
+{#$('#PlanningMF_ends_meet').highcharts({#}
+{##}
+{##}
+{#    chart: {#}
+{#        type: 'column'#}
+{#    },#}
+{#    title: {#}
+{#        text: 'Stacked column chart'#}
+{#    },#}
+{#    xAxis: {#}
+{#        categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']#}
+{#    },#}
+{#    yAxis: {#}
+{#        min: 0,#}
+{#        title: {#}
+{#            text: 'Total fruit consumption'#}
+{#        },#}
+{##}
+{#    },#}
+{##}
+{#    legend: {#}
+{#        align: 'right',#}
+{#        x: -30,#}
+{#        verticalAlign: 'top',#}
+{#        y: 25,#}
+{#        floating: true,#}
+{#        backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',#}
+{#        borderColor: '#CCC',#}
+{#        borderWidth: 1,#}
+{#        shadow: false#}
+{#    },#}
+{#    tooltip: {#}
+{#        headerFormat: '<b>{point.x}</b><br/>',#}
+{#        pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'#}
+{#    },#}
+{#    plotOptions: {#}
+{#        column: {#}
+{#            stacking: 'normal',#}
+{#            dataLabels: {#}
+{#                enabled: true,#}
+{#                color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'#}
+{#            }#}
+{#        }#}
+{#    },#}
+{#    series: [{#}
+{#        name: 'John',#}
+{#        data: [5, 3, 4, 7, 2]#}
+{#    }, {#}
+{#        name: 'Jane',#}
+{#        data: [2, 2, 3, 2, 1]#}
+{#    }, {#}
+{#        name: 'Joe',#}
+{#        data: [3, 4, 4, 2, 5]#}
+{#    }],#}
+{##}
+{#    credits: {#}
+{##}
+{#        enabled: false#}
+{#    }#}
+{##}
+{#});#}
+{##}
+{##}
+
+
+// ***********  Column chart and Line Chart Combined with Average Value of all Column (TrainingCapacityB_budgetfollowing) *************
+
+
+var title = {
+      text: 'Combination chart'
+   };
+   var xAxis = {
+      categories: ['Apples', 'Oranges', 'Pears', 'Bananas', 'Plums']
+   };
+   var labels = {
+      items: [{
+         html: 'Total fruit consumption',
+            style: {
+               left: '50px',
+               top: '18px',
+               color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+            }
+      }]
+   };
+
+   var credits = {
+
+       enabled : true
+   }
+   var series= [{
+        type: 'column',
+            name: 'Jane',
+            data: [3, 2, 1, 3, 4]
+        }, {
+            type: 'column',
+            name: 'John',
+            data: [2, 3, 5, 7, 6]
+        }, {
+            type: 'column',
+            name: 'Joe',
+            data: [4, 3, 3, 9, 0]
+        }, {
+            type: 'spline',
+            name: 'Average',
+            data: [3, 2.67, 3, 6.33, 3.33],
+            marker: {
+                lineWidth: 2,
+                lineColor: Highcharts.getOptions().colors[3],
+                fillColor: 'white'
+            }
+        }];
+
+   var json = {};
+   json.title = title;
+   json.xAxis = xAxis;
+   json.labels = labels;
+   json.credits = credits;
+   json.series = series;
+   $('#TrainingCapacityB_budgetfollowing').highcharts(json);
+
+
+   // **********  Column Chart with negative Axis (ProfileDetailsHHAnalytics) ***********
+
+$('#ProfileDetailsHHAnalytics').highcharts({
+
+   chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Column chart with negative values'
+    },
+    xAxis: {
+        categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: 'John',
+        data: [5, 3, 4, 7, 2]
+    }, {
+        name: 'Jane',
+        data: [2, -2, -3, 2, 1]
+    }, {
+        name: 'Joe',
+        data: [3, 4, 4, -2, 5]
+    }]
+
+});
+
+
+//  ***********   Box Plot Chart ( Dashboard )************
+
+$('#Dashboard').highcharts({
+
+    chart: {
+        type: 'boxplot'
+    },
+
+    title: {
+        text: 'Highcharts Box Plot Example'
+    },
+
+    legend: {
+        enabled: true
+    },
+
+    xAxis: {
+        categories: ['1', '2', '3', '4', '5'],
+        title: {
+            text: 'Experiment No.'
+        }
+    },
+
+    yAxis: {
+        title: {
+            text: 'Observations'
+        },
+        plotLines: [{
+            value: 932,
+            color: 'red',
+
+
+            width: 1,
+            label: {
+                text: 'Theoretical mean: 932',
+                align: 'center',
+                style: {
+                    color: 'gray'
+                }
+            }
+        }]
+    },
+
+    series: [{
+        name: 'Observations',
+        data: [
+            [760, 801, 848, 895, 965],
+            [733, 853, 939, 980, 1080],
+            [714, 762, 817, 870, 918],
+            [724, 802, 806, 871, 950],
+            [834, 836, 864, 882, 910]
+        ],
+        tooltip: {
+            headerFormat: '<em>Experiment No {point.key}</em><br/>'
+        }
+    }, {
+        name: 'Outlier',
+        color: Highcharts.getOptions().colors[0],
+        type: 'scatter',
+        data: [ // x, y positions where 0 is the first category
+            [0, 644],
+            [4, 718],
+            [4, 951],
+            [4, 969]
+        ],
+        marker: {
+            fillColor: 'white',
+            lineWidth: 1,
+            lineColor: Highcharts.getOptions().colors[0]
+        },
+        tooltip: {
+            pointFormat: 'Observation: {point.y}'
+        }
+    }]
+
+});
+
+
+
+// ************* Box ploat chart (Dashboard_2) *****************
+
+$('#Dashboard_2').highcharts({
+
+   chart: {
+        type: 'boxplot'
+    },
+
+    title: {
+        text: 'Highcharts box plot styling'
+    },
+
+    legend: {
+        enabled: true
+    },
+
+    xAxis: {
+        categories: ['1', '2', '3', '4', '5'],
+        title: {
+            text: 'Experiment No.'
+        }
+    },
+
+    yAxis: {
+        title: {
+            text: 'Observations'
+        }
+    },
+
+    plotOptions: {
+        boxplot: {
+            fillColor: '#F0F0E0',
+            lineWidth: 2,
+            medianColor: '#0C5DA5',
+            medianWidth: 3,
+            stemColor: '#A63400',
+            stemDashStyle: 'dot',
+            stemWidth: 1,
+            whiskerColor: '#3D9200',
+            whiskerLength: '20%',
+            whiskerWidth: 3
+        }
+    },
+
+    series: [{
+        name: 'Observations',
+        data: [
+            [760, 801, 848, 895, 965],
+            [733, 853, 939, 980, 1080],
+            [714, 762, 817, 870, 918],
+            [724, 802, 806, 871, 950],
+            [834, 836, 864, 882, 910]
+        ]
+    }]
+
+
+});
+
+</script>
+
+{% endblock %}

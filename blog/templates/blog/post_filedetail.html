@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+    			    <div>
+                        <a class="btn btn-default" href="{% url 'post_editfileinfo' pk=info.pk %}"><span class="glyphicon glyphicon-pencil"></span>Edit</a>
+                        </br>
+                        </br>
+                        <p> Domain : {{ info.domain }}</p>
+                        <p> Port : {{ info.port }}</p>
+                        <p> Src Derectory : {{ info.src_directory }}</p>
+      					<p> Socket :{{ info.socket|linebreaksbr }}</p>
+    				</div>
+
+{% endblock %}

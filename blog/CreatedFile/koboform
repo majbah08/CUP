@@ -1,0 +1,17 @@
+server {
+    listen 345;
+    server_name 454;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root 34534/koboform/dkobo;
+        try_files $uri $uri/ @secondStatic;
+    }
+    location @secondStatic {
+        root 34534/koboform;
+    }
+    location / {
+        include         uwsgi_params;
+        uwsgi_pass      unix:345;
+    }
+}

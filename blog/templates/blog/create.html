@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+
+        {% if error %}
+            Error: <br/>
+            <pre>{{error}}</pre>
+            <hr/>
+        {% endif %}
+
+        {% if fileContent %}
+            <p>Content of file stored at server: <br/>
+                <pre>{{fileContent}}</pre>
+            </p>
+            <hr/>
+        {% endif %}
+
+        <p>Fill below form to create a new file(temporary) and read it.</p>
+        <form method="post">
+            {% csrf_token %}
+            Enter content:<br/>
+            <textarea name='content' rows='4' cols='50' maxlength='100'>{%if contentToModify%} {{contentToModify}} {%endif%}</textarea><br/>
+            <input type='submit' value='Submit'/>
+        </form>
+
+
+{% endblock %}

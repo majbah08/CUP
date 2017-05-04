@@ -1,0 +1,396 @@
+{% extends 'blog/base.html' %}
+
+{% block customizeStyle %}
+    <style type="text/css">
+        .box {
+            width: 40px;
+        height: 20px;
+        display: inline-block;
+        }
+         .blue {
+        background: lightskyblue;
+        }
+         .black {
+        background: black;
+        }
+
+        .orange {
+        background: orange;
+        }
+        .green {
+        background: palegreen;
+        }
+         .violet {
+        background: mediumslateblue;
+        }
+        .scroll{
+            float:left;
+            width:1000px;
+            overflow-y: auto;
+            height: 500px;
+        }
+
+
+
+    </style>
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="row">
+
+             <div id = "HHAccesstoNutritiousFood_1">
+             </div>
+
+
+            <div id = "line_graph">
+             </div>
+
+        <div class = " scroll">
+        <table id = "Schooling_Status"  border="1" style = "align:center" width="100%" class="table table-bordered table-hover">
+            <caption><b> Schooling Status </b></caption>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Income source</th>
+                        <th>income change</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+        </table>
+
+    </div>
+
+
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+
+{##}
+{##}
+{#// ********** Getting Value From the Views *********#}
+{##}
+{#    var jsonForChart = {{ jsonForChart|safe }};#}
+{#    var jsonForChartTable = {{ jsonForChartTable|safe }};#}
+{##}
+{##}
+{#// ******* Get The Month Name for the Below Table (Unique -  Start )********#}
+{##}
+{#    var uniqueCategories = $.unique(jsonForChartTable.tableData.map(function (d) {#}
+{#        return d.category;#}
+{#    }));#}
+{##}
+{#// ******* Get The Month Name for the Below Table (Unique -  End )********#}
+{##}
+{#// Making Table  (Start) **************#}
+{##}
+{#    generateCategryTableData(jsonForChartTable, uniqueCategories)// Category of Scheme Data for showing Tabluler form#}
+{##}
+{#// Making Table (End) *************#}
+{##}
+{##}
+{#    $(document).ready(function () {#}
+{##}
+{#        // *********** Basic Bar Chart (HHAccesstoNutritiousFood_1) ***************#}
+{##}
+{#        // jsonDataList('HHAccesstoNutritiousFood_1','Solar Employment Growth by Sector, 2010-2016', 'bar',false,false,jsonForChart)#}
+{##}
+{##}
+{#    });#}
+{##}
+{##}
+{#    function generateCategryTableData(jsonForChartTable, uniqueCategories) {#}
+{##}
+{#        thead = ''#}
+{#        thead += '<tr><th>' + "Id" + '</th>'#}
+{#        for (var i = 0; i < uniqueCategories.length; i++) {#}
+{#            thead += '<th>' + uniqueCategories[i] + '</th>'#}
+{#        }#}
+{#        thead += '</tr>'#}
+{##}
+{#        tbody = '';#}
+{#        for (var i = 0; i < jsonForChartTable.tableData.length; i++) {#}
+{##}
+{#            tbody += '<tr><td>' + jsonForChartTable.tableData[i].hh_id + '</td>'#}
+{##}
+{#            for (var j = 0; j < uniqueCategories.length; j++) {#}
+{#                var c = jsonForChartTable.tableData[i].category#}
+{##}
+{#                if (c.localeCompare("+uniqueCategories[j]+")) {#}
+{##}
+{#                    for (var k = 0; k < jsonForChartTable.tableData[i].name.length; k++) {#}
+{##}
+{##}
+{#                        if (jsonForChartTable.tableData[i].name[k] == "01") {#}
+{#                            jsonForChartTable.tableData[i].name[k] = '<span class="blue box"></span>';#}
+{#                        } else if (jsonForChartTable.tableData[i].name[k] == "02") {#}
+{#                            jsonForChartTable.tableData[i].name[k] = '<span class="black box"></span>';#}
+{#                        } else if (jsonForChartTable.tableData[i].name[k] == "03") {#}
+{#                            jsonForChartTable.tableData[i].name[k] = '<span class="green box"></span>'#}
+{#                        } else if (jsonForChartTable.tableData[i].name[k] == "04") {#}
+{#                            jsonForChartTable.tableData[i].name[k] = '<span class="orange box"></span>'#}
+{#                        } else if (jsonForChartTable.tableData[i].name[k] == "05") {#}
+{#                            jsonForChartTable.tableData[i].name[k] = '<span class="violet box"></span>';#}
+{#                        }#}
+{##}
+{##}
+{#                    }#}
+{##}
+{#                    var colors = [#}
+{#                        "orange", "orange", "pink", "pink", "red", "red", "purple", "purple",#}
+{#                        "blue", "blue", "green", "green", "brown", "brown", "yellow", "yellow"#}
+{#                    ];#}
+{##}
+{##}
+{#                    tbody += '<td>' + jsonForChartTable.tableData[i].name.join(',').replace(/,/g, ' ').split() + '</td>'#}
+{#                }#}
+{#                else#}
+{#                    tbody += '<td></td>'#}
+{##}
+{#            }#}
+{##}
+{#            tbody += '</tr>'#}
+{##}
+{#        }#}
+{#        $('#Schooling_Status').find('thead').html(thead);#}
+{#        $('#Schooling_Status').find('tbody').html(tbody);#}
+{##}
+{#    }#}
+{##}
+{##}
+{#    function jsonDataList(divId, titleText, chartType, stackLabelEnabled, plotColumnDatalabelEnabled, dataset) {#}
+{##}
+{#        var chart = {#}
+{#            type: chartType#}
+{#        };#}
+{#        var title = {#}
+{#            text: titleText,#}
+{#        };#}
+{##}
+{##}
+{#        var subtitle = {#}
+{#            text: 'Source: thesolarfoundation.com',#}
+{#        };#}
+{#        var xAxis = {#}
+{#            categories: dataset.cat_list,#}
+{#            tickmarkPlacement: 'on',#}
+{#            title: {#}
+{#                enabled: false#}
+{#            }#}
+{#        };#}
+{#        var yAxis = {#}
+{#            allowDecimals: false,#}
+{#            min: 0,#}
+{#            title: {#}
+{#                text: 'Number of fruits'#}
+{#            },#}
+{##}
+{#            stackLabels: {#}
+{#                enabled: stackLabelEnabled,#}
+{#                style: {#}
+{#                    fontWeight: 'bold',#}
+{#                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'#}
+{#                }#}
+{##}
+{#            }#}
+{#        };#}
+{##}
+{#        var legend = {#}
+{#            layout: 'vertical',#}
+{#            align: 'right',#}
+{#            verticalAlign: 'middle'#}
+{#        };#}
+{#        var tooltip = {#}
+{#            pointFormat: '{series.name}: <b>{point.y:.1f}%</b>'#}
+{#        };#}
+{#        var plotOptions = {#}
+{#            pie: {#}
+{#                allowPointSelect: true,#}
+{#                cursor: 'pointer',#}
+{#                dataLabels: {#}
+{#                    enabled: false#}
+{#                },#}
+{#                showInLegend: true#}
+{#            }#}
+{#        };#}
+{#        var series = dataset.total#}
+{##}
+{#        var plotOptions = {#}
+{##}
+{#            column: {#}
+{##}
+{#                stacking: 'normal',#}
+{#                dataLabels: {#}
+{#                    enabled: plotColumnDatalabelEnabled,#}
+{#                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'#}
+{#                }#}
+{#            }#}
+{##}
+{#        };#}
+{#        var credits = {#}
+{##}
+{#            enabled: false#}
+{#        }#}
+{##}
+{#        var credits = {#}
+{#            enabled: false,#}
+{#        };#}
+{##}
+{##}
+{#        var json = {};#}
+{#        json.chart = chart;#}
+{#        json.title = title;#}
+{#        json.subtitle = subtitle;#}
+{#        json.xAxis = xAxis;#}
+{#        json.yAxis = yAxis;#}
+{#        json.tooltip = tooltip;#}
+{#        json.series = series;#}
+{#        json.plotOptions = plotOptions;#}
+{#        json.credits = credits;#}
+{##}
+{#        $('#' + divId).highcharts(json);#}
+{##}
+{#    }#}
+{##}
+{#    #}
+
+   // *********** Basic Bar Chart (HHAccesstoNutritiousFood_1) ***************
+
+
+   $('#HHAccesstoNutritiousFood_1').highcharts({
+
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Stacked column chart'
+    },
+    xAxis: {
+        categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Total fruit consumption'
+        },
+        stackLabels: {
+            enabled: true,
+            style: {
+                fontWeight: 'bold',
+                color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+            }
+        }
+    },
+    legend: {
+        align: 'right',
+        x: -30,
+        verticalAlign: 'top',
+        y: 25,
+        floating: true,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+        borderColor: '#CCC',
+        borderWidth: 1,
+        shadow: false
+    },
+    tooltip: {
+        headerFormat: '<b>{point.x}</b><br/>',
+        pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+    },
+    plotOptions: {
+        column: {
+            stacking: 'normal',
+
+        }
+    },
+    series: [{
+        name: 'John',
+        data: [5, 3, 4, 7, 2]
+    }, {
+        name: 'Jane',
+        data: [2, 2, 3, 2, 1]
+    }, {
+        name: 'Joe',
+        data: [3, 4, 4, 2, 5]
+    }]
+
+   });
+
+
+
+      $('#line_graph').highcharts({
+
+  chart: {
+        type: 'line'
+    },
+    title: {
+        text: 'Solar Employment Growth by Sector, 2010-2016'
+    },
+
+    subtitle: {
+        text: 'Source: thesolarfoundation.com'
+    },
+
+    yAxis: {
+        title: {
+            text: 'Number of Employees'
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+            pointStart: 2010
+        }
+    },
+
+    credits: {
+
+      enabled: false
+    } ,
+
+
+    series: [{
+        name: 'Installation',
+        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+    }, {
+        name: 'Manufacturing',
+        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+    }, {
+        name: 'Sales & Distribution',
+        data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+    }, {
+        name: 'Project Development',
+        data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+    }, {
+        name: 'Other',
+        data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+    }]
+
+
+   });
+
+
+
+
+
+  Highcharts.chart('container', {
+
+
+});
+
+
+</script>
+
+{% endblock %}

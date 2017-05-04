@@ -1,0 +1,343 @@
+{% extends 'blog/base.html' %}
+
+{% block customizeStyle %}
+    <style type="text/css">
+        .box {
+            width: 40px;
+        height: 20px;
+        display: inline-block;
+        }
+         .blue {
+        background: lightskyblue;
+        }
+         .black {
+        background: black;
+        }
+
+        .orange {
+        background: orange;
+        }
+        .green {
+        background: palegreen;
+        }
+         .violet {
+        background: mediumslateblue;
+        }
+        .scroll{
+            float:left;
+            width:1000px;
+            overflow-y: auto;
+            height: 500px;
+        }
+
+
+
+    </style>
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="row">
+
+             <div id = "HHAccesstoNutritiousFood_1">
+             </div>
+
+
+
+        <div class = " scroll">
+        <table id = "Schooling_Status"  border="1" style = "align:center" width="100%" class="table table-bordered table-hover">
+            <caption><b> Schooling Status </b></caption>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Income source</th>
+                        <th>income change</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+        </table>
+
+    </div>
+
+
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+
+{##}
+{##}
+{#// ********** Getting Value From the Views *********#}
+{##}
+{#    var jsonForChart = {{ jsonForChart|safe }};#}
+{#    var jsonForChartTable = {{ jsonForChartTable|safe }};#}
+{##}
+{##}
+{#// ******* Get The Month Name for the Below Table (Unique -  Start )********#}
+{##}
+{#    var uniqueCategories = $.unique(jsonForChartTable.tableData.map(function (d) {#}
+{#        return d.category;#}
+{#    }));#}
+{##}
+{#// ******* Get The Month Name for the Below Table (Unique -  End )********#}
+{##}
+{#// Making Table  (Start) **************#}
+{##}
+{#    generateCategryTableData(jsonForChartTable, uniqueCategories)// Category of Scheme Data for showing Tabluler form#}
+{##}
+{#// Making Table (End) *************#}
+{##}
+{##}
+{#    $(document).ready(function () {#}
+{##}
+{#        // *********** Basic Bar Chart (HHAccesstoNutritiousFood_1) ***************#}
+{##}
+{#        // jsonDataList('HHAccesstoNutritiousFood_1','Solar Employment Growth by Sector, 2010-2016', 'bar',false,false,jsonForChart)#}
+{##}
+{##}
+{#    });#}
+{##}
+{##}
+{#    function generateCategryTableData(jsonForChartTable, uniqueCategories) {#}
+{##}
+{#        thead = ''#}
+{#        thead += '<tr><th>' + "Id" + '</th>'#}
+{#        for (var i = 0; i < uniqueCategories.length; i++) {#}
+{#            thead += '<th>' + uniqueCategories[i] + '</th>'#}
+{#        }#}
+{#        thead += '</tr>'#}
+{##}
+{#        tbody = '';#}
+{#        for (var i = 0; i < jsonForChartTable.tableData.length; i++) {#}
+{##}
+{#            tbody += '<tr><td>' + jsonForChartTable.tableData[i].hh_id + '</td>'#}
+{##}
+{#            for (var j = 0; j < uniqueCategories.length; j++) {#}
+{#                var c = jsonForChartTable.tableData[i].category#}
+{##}
+{#                if (c.localeCompare("+uniqueCategories[j]+")) {#}
+{##}
+{#                    for (var k = 0; k < jsonForChartTable.tableData[i].name.length; k++) {#}
+{##}
+{##}
+{#                        if (jsonForChartTable.tableData[i].name[k] == "01") {#}
+{#                            jsonForChartTable.tableData[i].name[k] = '<span class="blue box"></span>';#}
+{#                        } else if (jsonForChartTable.tableData[i].name[k] == "02") {#}
+{#                            jsonForChartTable.tableData[i].name[k] = '<span class="black box"></span>';#}
+{#                        } else if (jsonForChartTable.tableData[i].name[k] == "03") {#}
+{#                            jsonForChartTable.tableData[i].name[k] = '<span class="green box"></span>'#}
+{#                        } else if (jsonForChartTable.tableData[i].name[k] == "04") {#}
+{#                            jsonForChartTable.tableData[i].name[k] = '<span class="orange box"></span>'#}
+{#                        } else if (jsonForChartTable.tableData[i].name[k] == "05") {#}
+{#                            jsonForChartTable.tableData[i].name[k] = '<span class="violet box"></span>';#}
+{#                        }#}
+{##}
+{##}
+{#                    }#}
+{##}
+{#                    var colors = [#}
+{#                        "orange", "orange", "pink", "pink", "red", "red", "purple", "purple",#}
+{#                        "blue", "blue", "green", "green", "brown", "brown", "yellow", "yellow"#}
+{#                    ];#}
+{##}
+{##}
+{#                    tbody += '<td>' + jsonForChartTable.tableData[i].name.join(',').replace(/,/g, ' ').split() + '</td>'#}
+{#                }#}
+{#                else#}
+{#                    tbody += '<td></td>'#}
+{##}
+{#            }#}
+{##}
+{#            tbody += '</tr>'#}
+{##}
+{#        }#}
+{#        $('#Schooling_Status').find('thead').html(thead);#}
+{#        $('#Schooling_Status').find('tbody').html(tbody);#}
+{##}
+{#    }#}
+{##}
+{##}
+{#    function jsonDataList(divId, titleText, chartType, stackLabelEnabled, plotColumnDatalabelEnabled, dataset) {#}
+{##}
+{#        var chart = {#}
+{#            type: chartType#}
+{#        };#}
+{#        var title = {#}
+{#            text: titleText,#}
+{#        };#}
+{##}
+{##}
+{#        var subtitle = {#}
+{#            text: 'Source: thesolarfoundation.com',#}
+{#        };#}
+{#        var xAxis = {#}
+{#            categories: dataset.cat_list,#}
+{#            tickmarkPlacement: 'on',#}
+{#            title: {#}
+{#                enabled: false#}
+{#            }#}
+{#        };#}
+{#        var yAxis = {#}
+{#            allowDecimals: false,#}
+{#            min: 0,#}
+{#            title: {#}
+{#                text: 'Number of fruits'#}
+{#            },#}
+{##}
+{#            stackLabels: {#}
+{#                enabled: stackLabelEnabled,#}
+{#                style: {#}
+{#                    fontWeight: 'bold',#}
+{#                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'#}
+{#                }#}
+{##}
+{#            }#}
+{#        };#}
+{##}
+{#        var legend = {#}
+{#            layout: 'vertical',#}
+{#            align: 'right',#}
+{#            verticalAlign: 'middle'#}
+{#        };#}
+{#        var tooltip = {#}
+{#            pointFormat: '{series.name}: <b>{point.y:.1f}%</b>'#}
+{#        };#}
+{#        var plotOptions = {#}
+{#            pie: {#}
+{#                allowPointSelect: true,#}
+{#                cursor: 'pointer',#}
+{#                dataLabels: {#}
+{#                    enabled: false#}
+{#                },#}
+{#                showInLegend: true#}
+{#            }#}
+{#        };#}
+{#        var series = dataset.total#}
+{##}
+{#        var plotOptions = {#}
+{##}
+{#            column: {#}
+{##}
+{#                stacking: 'normal',#}
+{#                dataLabels: {#}
+{#                    enabled: plotColumnDatalabelEnabled,#}
+{#                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'#}
+{#                }#}
+{#            }#}
+{##}
+{#        };#}
+{#        var credits = {#}
+{##}
+{#            enabled: false#}
+{#        }#}
+{##}
+{#        var credits = {#}
+{#            enabled: false,#}
+{#        };#}
+{##}
+{##}
+{#        var json = {};#}
+{#        json.chart = chart;#}
+{#        json.title = title;#}
+{#        json.subtitle = subtitle;#}
+{#        json.xAxis = xAxis;#}
+{#        json.yAxis = yAxis;#}
+{#        json.tooltip = tooltip;#}
+{#        json.series = series;#}
+{#        json.plotOptions = plotOptions;#}
+{#        json.credits = credits;#}
+{##}
+{#        $('#' + divId).highcharts(json);#}
+{##}
+{#    }#}
+{##}
+{#    #}
+
+   // *********** Basic Bar Chart (HHAccesstoNutritiousFood_1) ***************
+
+
+   $('#HHAccesstoNutritiousFood_1').highcharts({
+chart: {
+        type: 'boxplot'
+    },
+
+    title: {
+        text: 'Highcharts Box Plot Example'
+    },
+
+    legend: {
+        enabled: true
+    },
+
+    xAxis: {
+        categories: ['1', '2', '3', '4', '5'],
+        title: {
+            text: 'Experiment No.'
+        }
+    },
+
+    yAxis: {
+        title: {
+            text: 'Observations'
+        },
+        plotLines: [{
+            value: 932,
+            color: 'red',
+
+
+            width: 1,
+            label: {
+                text: 'Theoretical mean: 932',
+                align: 'center',
+                style: {
+                    color: 'gray'
+                }
+            }
+        }]
+    },
+
+    series: [{
+        name: 'Observations',
+        data: [
+            [760, 801, 848, 895, 965],
+            [733, 853, 939, 980, 1080],
+            [714, 762, 817, 870, 918],
+            [724, 802, 806, 871, 950],
+            [834, 836, 864, 882, 910]
+        ],
+        tooltip: {
+            headerFormat: '<em>Experiment No {point.key}</em><br/>'
+        }
+    }, {
+        name: 'Outlier',
+        color: Highcharts.getOptions().colors[0],
+        type: 'scatter',
+        data: [ // x, y positions where 0 is the first category
+            [0, 644],
+            [4, 718],
+            [4, 951],
+            [4, 969]
+        ],
+        marker: {
+            fillColor: 'white',
+            lineWidth: 1,
+            lineColor: Highcharts.getOptions().colors[0]
+        },
+        tooltip: {
+            pointFormat: 'Observation: {point.y}'
+        }
+    }]
+
+   });
+
+
+</script>
+
+{% endblock %}
